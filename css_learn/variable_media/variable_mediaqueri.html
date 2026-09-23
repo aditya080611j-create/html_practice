@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variable and media query</title>
+    <style>
+        :root {
+            --colortheme:blue;
+            --seccolor:rgb(105, 105, 255);            
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            background-color: green;
+        }
+        
+        ul li {
+            margin: 5px;
+            padding: 5px;
+            background-color: var(--seccolor);
+        }
+        ul li:first-child{
+            background-color: var(--colortheme);
+        }
+        .content p{
+            background-color: var(--seccolor);
+        }
+        @media only screen and (max-width:455px){
+            body{
+                background-color: red;
+            }
+        }
+        /* @media not| only mediatype and (expression) { css-code;} */
+
+    </style>
+</head>
+
+<body>
+    <!-- this is vector and media query website  -->
+    <div class="list">
+        <ul>
+            <li>hello </li>
+            <li>hi</li>
+            <li>kese ho</li>
+        </ul>
+    </div>
+    <div class="content">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia qui nulla dolor in est, iste odio hic neque error repellendus eaque expedita voluptatibus accusamus ea placeat eligendi. Repellat suscipit dignissimos maiores unde molestiae enim ut nam dolorem facere quo perferendis explicabo non dolores, velit reiciendis.</p>
+    </div>
+</body>
+
+</html>
