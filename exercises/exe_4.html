@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: rgb(247, 0, 0);
+            height: 50px;
+            position: sticky;
+            z-index: 10;
+            top: 0px;
+            font-size: 30px;
+        }
+
+        .navbar li {
+            list-style: none;
+            display: inline;
+            margin: 44px;
+            padding: 2px;
+        }
+
+        .body {
+            background-color: aqua;
+            height: 1000px;
+            margin: 2px 0;
+            position: relative;
+        }
+
+        .element1 {
+            height: 800px;
+            width: 500px;
+
+            background-color: blue;
+            position: absolute;
+            top: 100px;
+            left: 84px;
+        }
+
+        .element2 {
+            height: 800px;
+            width: 500px;
+
+            background-color: rgb(255, 0, 170);
+            position: absolute;
+            top: 100px;
+            right: 84px;
+
+        }
+
+        .obj {
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: fixed;
+            right: 5px;
+            bottom: 2px;
+        }
+        .content{
+            height: 25vh;
+            width: 70vw;
+            border: 2px solid black;
+            border-radius: 20px;
+           margin: auto; 
+           font-family: 'Times New Roman', Times, serif;
+           text-align: center;
+           font-size: 50px;
+        }
+        .content p{
+            margin: 60px 0;
+        }
+        .footer{
+            height: 10vh;
+            width: 100vw;
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li>home</li>
+            <li>contact</li>
+            <li>product</li>
+        </ul>
+    </div>
+    <div class="body">
+        <div class="element1"></div>
+        <div class="element2"></div>
+    </div>
+    <div class="obj"></div>
+    <div class="content"><p>welcome to this website</p></div>
+    <div class="footer"></div>
+
+</body>
+
+</html>
