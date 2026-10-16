@@ -12,7 +12,14 @@
     body{
         background-color: black;
     }
-    /* .container{} */
+    /* .container{
+        display: flex;
+    } */
+    .title{
+        margin-top: 6px;
+        margin-left: 20px;
+        color: white;
+    }
     .cards{
         margin: 20px;
         margin-bottom: 10px;
@@ -22,12 +29,41 @@
         height: 13vh;
         width: 70vw;
         background-color: rgb(59, 59, 59);
-
+        display: flex;
     }
     .cards img{
         height:11vh ;
         width:10vw ;
         margin: 5px 0;
+        border-radius: 12px;
+    }
+    .cname{
+        margin-left: 20px;
+        color: rgb(125, 124, 124);
+    }
+    .views{
+        margin-top: 31px;
+        position: relative;
+        left: -100px;
+        color: rgb(125, 124, 124);
+        padding: 2px;    
+    }
+    .months{
+        margin-top: 31px;
+        position: relative;
+        left: -100px;
+        color: rgb(125, 124, 124);    
+        padding: 2px;
+    }
+    .duration{ 
+        position: relative;
+        left: -418px;
+        top: 57px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.529); 
+        padding: 2px;
+        height: 20px;
+
     }
 </style>
 </head>
@@ -37,6 +73,13 @@
             <span >
                 <img src="" alt="thumbnail" id="thumbnail">
             </span>
+            <span>
+                <h2 id="title" class="title"></h2> 
+                <h3 class="cname" id="cname"></h3>
+            </span>
+            <h3 class="views" id="views"></h3><h3 class="months">Views.</h3>
+            <h3 class="months" id="months"></h3><h3 class="months">Months</h3>
+            <h3 class="duration" id="duration"></h3>
         </div>
 
     </div>
