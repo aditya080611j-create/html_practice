@@ -10,7 +10,7 @@
         padding: 0;
     }
     body{
-        background-color: black;
+        /* background-color: black; */
     }
     /* .container{
         display: flex;
@@ -32,8 +32,8 @@
         display: flex;
     }
     .cards img{
-        height:11vh ;
-        width:10vw ;
+        height:12vh ;
+        width:11vw ;
         margin: 5px 0;
         border-radius: 12px;
     }
@@ -57,32 +57,22 @@
     }
     .duration{ 
         position: relative;
-        left: -418px;
-        top: 57px;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.529); 
-        padding: 2px;
-        height: 20px;
-
+    left: -411px;
+    top: 30px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.529);
+    padding: 2px;
+    height: 12px;
+    border-radius: 6px;
+    font-size: small;
     }
 </style>
 </head>
 <body>
-    <div class="container">
-        <div class="cards">
-            <span >
-                <img src="" alt="thumbnail" id="thumbnail">
-            </span>
-            <span>
-                <h2 id="title" class="title"></h2> 
-                <h3 class="cname" id="cname"></h3>
-            </span>
-            <h3 class="views" id="views"></h3><h3 class="months">Views.</h3>
-            <h3 class="months" id="months"></h3><h3 class="months">Months</h3>
-            <h3 class="duration" id="duration"></h3>
-        </div>
-
+    <div class="container" id="contain">
+       
     </div>
+    <button id="btn">click it</button>
     <script src="script.js"></script>
 </body>
 </html>
