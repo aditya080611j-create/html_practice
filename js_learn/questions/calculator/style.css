@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.calc {
+    border: 2px solid black;
+    width: 75%;
+    height: 530px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ans {
+    border: 2px solid black;
+    height: 15%;
+    padding: 50px;
+    font-size: xxx-large;
+    background-color: grey;
+}
+
+.func {
+    border: 2px solid black;
+    height: 68%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+}
+
+.func button {
+    border: 2px solid black;
+    font-size: 100px;
+    /* background-color: aqua; */
+    background-image: linear-gradient(to right, aqua 45% , blue );
+}
