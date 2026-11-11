@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: #fff;
+    
+    
+}
+
+.clock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.clock div{
+    background-color: #111;
+    color: #0ff;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow:
+      0 0 10px rgba(0, 220, 255, 0.8),
+      0 0 30px rgba(0, 220, 255, 0.4),
+      0 0 60px rgba(0, 220, 255, 0.15);
+    border: 2px solid blue; 
+     padding: 83px;
+    font-size: xxx-large;
+}
+.clock span{
+    font-size: 150px;
+}
