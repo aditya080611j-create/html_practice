@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let str = "asdf";
+        // Strings are immutable; swap characters in an array, then join it back.
+        let chars = str.split("");
+        for (let i = 0; i < chars.length / 2; i++) {
+            let temp = chars[i];
+            chars[i] = chars[chars.length - i - 1];
+            chars[chars.length - i - 1] = temp;
+        }
+        str = chars.join("");
+        console.log(str);
+        
+    </script>
+</body>
+</html>
