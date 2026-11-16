@@ -1,4 +1,3 @@
-console.log("yo");
 async function getsongs(){
     let a =await fetch("http://127.0.0.1:5500/spotify-clone-project/songs/");
     let response=await a.text();
@@ -16,8 +15,13 @@ async function getsongs(){
 }
 
 async function main(){
-    let song=getsongs();
-    console.log(song);
-    
+    let songs=await getsongs();
+    console.log(songs);
+    var audio=new Audio(songs[0]);
+    audio.play();
+    audio .addEventListener("loadeddata",() => {
+        let duration =audio.duration;
+        console.log(duration);
+    })
 }
 main()
