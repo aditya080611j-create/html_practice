@@ -216,3 +216,7 @@ body {
     background-color: black;
     transition: left 0.5s;
 }
+.songbuttons img{
+    cursor: pointer;
+    transition: all 0.5s;
+}

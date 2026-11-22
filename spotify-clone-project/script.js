@@ -1,3 +1,4 @@
+let currentsong=new Audio();
 async function getsongs() {
     let a = await fetch("http://127.0.0.1:5500/spotify-clone-project/songs/");
     let response = await a.text();
@@ -13,7 +14,12 @@ async function getsongs() {
     }
     return songs;
 }
-
+function playMusic(track){
+    // let audio=new Audio("/spotify-clone-project/songs/"+track)
+    currentsong.src="/spotify-clone-project/songs/"+track
+    currentsong.play();
+    play.src="pause.svg"
+}
 async function main() {
     let songs = await getsongs();
     console.log(songs);
@@ -23,8 +29,8 @@ async function main() {
         songul.innerHTML = songul.innerHTML + `<li>
         <img class="invert" src="music-svgrepo-com.svg" alt="music">
                             <div class="info">
-                                <div>${song.replaceAll("%20", " ").replaceAll(".mp3", "")}</div>
-                                <div>Noni</div>
+                                <div>${song}</div>
+                                <div><b><u><i>Noni</i></b></u></div>
                             </div>
                                 <div class="playnow">
                                     <span>play now</span>
@@ -39,6 +45,17 @@ console.log(e.querySelector(".info").firstElementChild.innerHTML)
 playMusic(e.querySelector(".info").firstElementChild.innerHTML)
 })
 }
-)  
+)
+// attach event listener to play pause 
+play.addEventListener("click",() => {
+    if(currentsong.paused){
+        currentsong.play()
+        play.src="pause.svg"
+    }
+    else{
+        currentsong.pause();
+        play.src="play.svg"
+    }
+})  
 }
 main()
