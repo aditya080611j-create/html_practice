@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LearnHub</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif;
+    color: rgb(16, 29, 56);
+    background-color: rgb(248, 250, 252);
+}
+
+a {
+    text-decoration: none;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 12px 7%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(24, 85, 170);
+    font-size: 25px;
+    font-weight: bold;
+    position: relative;
+}
+
+.nav_box {
+    flex: 1 1 350px;
+}
+
+.nav_box nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px 25px;
+}
+
+.nav_box a {
+    color: rgb(30, 30, 30);
+    font-size: 14px;
+}
+
+.nav_box a:hover {
+    color: rgb(24, 85, 170);
+}
+
+.start-btn {
+    background-color: rgb(35, 105, 190);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* hidden checkbox and hamburger button for phone screens */
+#menu_chk {
+    display: none;
+}
+
+.ham_btn {
+    display: none;
+    font-size: 22px;
+    color: rgb(24, 85, 170);
+    cursor: pointer;
+}
+
+.banner_sec {
+    background-color: rgb(235, 242, 250);
+    padding: 30px 7%;
+}
+
+.banner-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.banner_sec h4 {
+    display: inline-block;
+    background-color: rgb(35, 105, 190);
+    color: rgb(255, 255, 255);
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin: 0 0 10px;
+    font-size: 12px;
+}
+
+.banner_sec h1 {
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 5px 0 12px;
+}
+
+.banner_sec p {
+    color: rgb(64, 81, 110);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.hero-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-group a,
+.about-box a {
+    display: inline-block;
+    background-color: rgb(35, 105, 190);
+    color: rgb(255, 255, 255);
+    padding: 11px 20px;
+    border: 1px solid rgb(35, 105, 190);
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.btn-group a:hover,
+.about-box a:hover {
+    background-color: rgb(25, 75, 135);
+}
+
+.btn-group .sec-btn {
+    background-color: rgb(255, 255, 255);
+    color: rgb(24, 85, 170);
+}
+
+.btn-group .sec-btn:hover {
+    background-color: rgb(224, 237, 255);
+}
+
+.features {
+    padding: 30px 7%;
+    text-align: center;
+    background-color: rgb(245, 249, 253);
+}
+
+.features h2,
+.res-sec h2 {
+    font-size: 25px;
+    margin: 0 0 5px;
+}
+
+.features>p,
+.res-sec>p {
+    color: rgb(70, 88, 117);
+    font-size: 14px;
+    margin: 0;
+}
+
+.feat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin: 20px auto 0;
+    max-width: 1200px;
+}
+
+.feat-grid>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 12px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    border: 1px solid rgb(225, 232, 240);
+    text-align: center;
+    min-width: 0;
+}
+
+.feat-grid i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 25px;
+    color: rgb(35, 105, 190);
+    background-color: rgb(220, 234, 255);
+}
+
+.feat-grid>div:first-child i {
+    color: rgb(223, 38, 56);
+    background-color: rgb(255, 224, 227);
+}
+
+.feat-grid>div:nth-child(2) i {
+    color: rgb(7, 139, 102);
+    background-color: rgb(217, 246, 233);
+}
+
+.feat-grid>div:nth-child(4) i {
+    color: rgb(230, 106, 9);
+    background-color: rgb(255, 234, 213);
+}
+
+.feat-grid h3 {
+    font-size: 15px;
+    margin: 0 0 5px;
+}
+
+.feat-grid p {
+    color: rgb(70, 88, 117);
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.about-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    align-items: center;
+    gap: 35px;
+    padding: 30px 7%;
+    background-color: rgb(255, 255, 255);
+}
+
+.about_pic {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.about-box h2 {
+    font-size: 25px;
+    margin: 0 0 7px;
+}
+
+.about-box p {
+    color: rgb(70, 88, 117);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 15px;
+}
+
+.res-sec {
+    padding: 30px 7%;
+    text-align: center;
+    background-color: rgb(243, 248, 253);
+}
+
+.cards_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin: 20px auto 0;
+    max-width: 1250px;
+    text-align: left;
+}
+
+.cards_list>div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    border: 1px solid rgb(225, 232, 240);
+    min-width: 0;
+}
+
+.cards_list img {
+    width: 40%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cards_list section {
+    flex: 1;
+    min-width: 0;
+}
+
+.cards_list header {
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    background-color: rgb(8, 120, 249);
+    padding: 4px 9px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+.cards_list>div:nth-child(2) header {
+    background-color: rgb(145, 76, 244);
+}
+
+.cards_list>div:nth-child(3) header {
+    background-color: rgb(10, 159, 131);
+}
+
+.cards_list h4 {
+    font-size: 14px;
+    margin: 8px 0 5px;
+}
+
+.cards_list p {
+    font-size: 12px;
+    color: rgb(70, 88, 117);
+    line-height: 1.4;
+    margin: 0 0 7px;
+}
+
+.cards_list a {
+    color: rgb(24, 85, 170);
+    font-size: 12px;
+}
+
+.cards_list a:hover {
+    text-decoration: underline;
+}
+
+.ftr {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 25px;
+    padding: 25px 7%;
+    background-color: rgb(9, 30, 52);
+    color: rgb(255, 255, 255);
+}
+
+.ftr h3 {
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+
+.ftr p {
+    color: rgb(220, 229, 239);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 5px 0;
+}
+
+.ftr-brand {
+    font-size: 23px !important;
+    font-weight: bold;
+}
+
+.ftr-brand span {
+    color: rgb(57, 145, 255);
+}
+
+.ftr_menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ftr_menu a {
+    color: rgb(224, 232, 240);
+    font-size: 13px;
+}
+
+.ftr_menu a:hover {
+    color: rgb(101, 170, 255);
+}
+
+.sub-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.sub-form input {
+    flex: 1 1 120px;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+}
+
+.sub-form button {
+    padding: 10px 13px;
+    background-color: rgb(35, 105, 190);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sub_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 14px 7%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(9, 30, 52);
+    border-top: 1px solid rgb(52, 70, 90);
+}
+
+.sub_bar p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.soc-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.soc-icons a {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+/* phone screens like iPhone 16 (393px wide) - tablets and PC stay normal */
+@media (max-width: 480px) {
+    .ham_btn {
+        display: block;
+    }
+
+    .start-btn {
+        display: none;
+    }
+
+    .nav_box {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 230px;
+        height: 100vh;
+        background-color: rgb(255, 255, 255);
+        padding: 25px 20px;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+        flex: none;
+    }
+
+    .nav_box nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        margin-top: 20px;
+    }
+
+    .nav_box a {
+        font-size: 16px;
+    }
+
+    #menu_chk:checked ~ .nav_box {
+        display: block;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<header><i class="fa-solid fa-book-open"></i> LearnHub</header>
+
+<input type="checkbox" id="menu_chk">
+<label for="menu_chk" class="ham_btn"><i class="fa-solid fa-bars"></i></label>
+
+<div class="nav_box">
+<nav>
+<a href="#Home">Home</a>
+<a href="#About">About</a>
+<a href="#Resources">Resources</a>
+<a href="#Courses">Courses</a>
+<a href="#Contact">Contact</a>
+</nav>
+</div>
+
+<a href="#Resources" class="start-btn">Get Started</a>
+</div>
+
+<div class="banner_sec" id="Home">
+<div class="banner-inner">
+<div>
+<h4>Learn · Explore · Grow</h4>
+<h1>Knowledge for a Brighter Tomorrow</h1>
+<p>Access high-quality learning resources, articles, and courses to enhance your skills and stay updated in the modern world.</p>
+
+<div class="btn-group">
+<a href="#Resources">Explore Resources <i class="fa-solid fa-arrow-right"></i></a>
+<a href="#About" class="sec-btn">Learn More</a>
+</div>
+</div>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSS_3ttRpz3k9vkTXbyQPSuJyjZ8S8D3SrzOgqDvY5zQ&s=10" alt="Home Photo" class="hero-img">
+</div>
+</div>
+
+<div class="features">
+<h2>Why Choose LearnHub?</h2>
+<p>We provide valuable content and resources to help you learn, grow, and achieve your goals.</p>
+
+<div class="feat-grid">
+<div>
+<i class="fa-solid fa-book-open"></i>
+<section>
+<h3>High-Quality Content</h3>
+<p>Well-structured and easy-to-understand learning materials.</p>
+</section>
+</div>
+
+<div>
+<i class="fa-solid fa-graduation-cap"></i>
+<section>
+<h3>Expert Guidance</h3>
+<p>Learn from industry experts and academic professionals.</p>
+</section>
+</div>
+
+<div>
+<i class="fa-regular fa-lightbulb"></i>
+<section>
+<h3>Wide Range of Topics</h3>
+<p>Explore technology, science, business, and more.</p>
+</section>
+</div>
+
+<div>
+<i class="fa-solid fa-users"></i>
+<section>
+<h3>Community Support</h3>
+<p>Connect with learners and share knowledge.</p>
+</section>
+</div>
+</div>
+</div>
+
+<div class="about-box" id="About">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaGyJoheGiEbMPrWSVivRNMo60xnDN_C8fF51CV9eN6g&s=10" alt="LearnHub Photo" class="about_pic">
+
+<div>
+<h2>About LearnHub</h2>
+<p>LearnHub is an online platform dedicated to providing informative and high-quality educational content. Our mission is to make learning accessible to everyone, anytime and anywhere. Whether you are a student, professional, or simply a curious learner, you will find valuable resources to support your journey.</p>
+<a href="#Resources">Read More <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+
+<div class="res-sec" id="Resources">
+<h2>Latest Resources</h2>
+<p>Explore our recent articles, tutorials, and learning materials.</p>
+
+<div class="cards_list" id="Courses">
+<div>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSadPjbyOlzd7DVRT7nkPRT1PQ8_7xMexIrBVYtUZHMiQ&s=10" alt="Coding" class="pic_web">
+
+<section>
+<header>Web Development</header>
+<h4>Introduction to HTML and CSS</h4>
+<p>Learn the basics of HTML and CSS to create beautiful and responsive websites.</p>
+<a href="#Courses">Read More <i class="fa-solid fa-arrow-right"></i></a>
+</section>
+</div>
+
+<div>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkOLlPMFEALJXil7IOWC0usMhawefHpH7pBGwL2oBiUg&s=10" alt="AI" class="pic_ai">
+
+<section>
+<header>Artificial Intelligence</header>
+<h4>Basics of Machine Learning</h4>
+<p>Understand the core concepts of machine learning with practical examples.</p>
+<a href="#Courses">Read More <i class="fa-solid fa-arrow-right"></i></a>
+</section>
+</div>
+
+<div>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDPwRyZa73_XAmihD0jSktehDGGxszI0kLF5ZuLresWw&s=10" alt="Data Science" class="pic_ds">
+
+<section>
+<header>Data Science</header>
+<h4>Data Analysis with Python</h4>
+<p>Learn how to analyse and visualize data using Python and popular libraries.</p>
+<a href="#Courses">Read More <i class="fa-solid fa-arrow-right"></i></a>
+</section>
+</div>
+</div>
+</div>
+
+<div class="ftr" id="Contact">
+<div>
+<h3 class="ftr-brand"><i class="fa-solid fa-book-open"></i> Learn<span>Hub</span></h3>
+<p>Empowering learners with knowledge and opportunities for a better future.</p>
+</div>
+
+<div class="ftr_menu">
+<h3>Quick Links</h3>
+<a href="#Home">Home</a>
+<a href="#About">About</a>
+<a href="#Resources">Resources</a>
+<a href="#Courses">Courses</a>
+<a href="#Contact">Contact</a>
+</div>
+
+<div class="ftr_menu">
+<h3>Popular Topics</h3>
+<a href="#Resources">Web Development</a>
+<a href="#Resources">Data Science</a>
+<a href="#Resources">Artificial Intelligence</a>
+<a href="#Resources">Cyber Security</a>
+<a href="#Resources">Career Guidance</a>
+</div>
+
+<div>
+<h3>Newsletter</h3>
+<p>Subscribe to our newsletter for the latest updates and resources.</p>
+
+<form class="sub-form" action="#Contact">
+<input type="email" placeholder="Enter your email" required>
+<button type="submit">Subscribe</button>
+</form>
+</div>
+</div>
+
+<div class="sub_bar">
+<p>&copy; 2026 LearnHub. All rights reserved.</p>
+
+<div class="soc-icons">
+<a href="#Contact"><i class="fa-brands fa-facebook"></i></a>
+<a href="#Contact"><i class="fa-brands fa-twitter"></i></a>
+<a href="#Contact"><i class="fa-brands fa-linkedin"></i></a>
+<a href="#Contact"><i class="fa-brands fa-instagram"></i></a>
+<a href="#Contact"><i class="fa-brands fa-youtube"></i></a>
+</div>
+</div>
+
+</body>
+
+</html>

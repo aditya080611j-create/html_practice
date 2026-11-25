@@ -1,5 +1,6 @@
 :root{
     --a:0;
+    --b:55px;
 }
 * {
     margin: 0;
@@ -90,7 +91,7 @@ body {
     margin: 16px 0;
     background-color: #252525;
     position: relative;
-    transition: all .9s;
+    transition: all .5s;
 }
 
 .card>* {
@@ -112,7 +113,10 @@ body {
 .card:hover{
 background-color:rgb(105, 103, 103);
 cursor: pointer;
---a: 1; }
+--a: 1;
+--b:110px;
+transition: all .5s;
+}
 
 .play {
     width: 28px;
@@ -124,9 +128,11 @@ cursor: pointer;
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 110px;
+    bottom: var(--b);
     opacity: var(--a);
     right: 17px;
+    transition: all .3s;
+    
 }
 
 .buttons>* {
@@ -266,6 +272,7 @@ margin: 0;
     top: 25px;
     width: 30px;
     z-index: 3;
+    display: inline;
     /* cursor: pointer; */
 }
 .right {
