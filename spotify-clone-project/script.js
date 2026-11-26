@@ -17,7 +17,7 @@ function secondsToMinutesSeconds(seconds) {
 let currentsong = new Audio();
 async function getsongs(folder) {
     currfolder = folder;
-    let a = await fetch(`http://127.0.0.1:5500/${folder}/`);
+    let a = await fetch(`/${folder}/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -66,7 +66,7 @@ function playMusic(track, pause = false) {
     document.querySelector(".songtime").innerHTML = "00:00/00:00"
 }
 async function displayAlbums () {
-let a = await fetch(`http://127.0.0.1:5500/spotify-clone-project/songs/`)
+let a = await fetch(`/spotify-clone-project/songs/`)
 let response = await a.text();
 let div = document.createElement("div")
 div.innerHTML = response;
@@ -78,7 +78,7 @@ for (let index = 0; index < array.length; index++) {
     const e = array[index];
         if (e.href.includes("/songs/")) {
             const folder = e.href.split("/").slice(-2)[1];
-            const a = await fetch(`http://127.0.0.1:5500/spotify-clone-project/songs/${folder}/info.json`);
+            const a = await fetch(`/spotify-clone-project/songs/${folder}/info.json`);
             const albumInfo = await a.json();
             console.log(albumInfo);
             cardcontainer.innerHTML= cardcontainer.innerHTML+`<div data-folder="${albumInfo.data}" class="card">
