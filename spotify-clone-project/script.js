@@ -1,5 +1,14 @@
 let songs;
 let currfolder;
+// GitHub Pages hosts this project under its repository name, unlike localhost.
+const projectBase = location.pathname.startsWith("/spotify-clone-project/")
+    ? "/spotify-clone-project/"
+    : "/";
+
+function sitePath(path) {
+    return projectBase + path.replace(/^\/+/, "");
+}
+
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
         return "00:00";
@@ -17,7 +26,7 @@ function secondsToMinutesSeconds(seconds) {
 let currentsong = new Audio();
 async function getsongs(folder) {
     currfolder = folder;
-    let a = await fetch(`/${folder}/`);
+    let a = await fetch(sitePath(`${folder}/`));
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -57,7 +66,7 @@ async function getsongs(folder) {
 }
 function playMusic(track, pause = false) {
     // let audio=new Audio("/spotify-clone-project/songs/"+track)
-    currentsong.src = `/${currfolder}/` + track
+    currentsong.src = sitePath(`${currfolder}/${track}`);
     if (!pause) {
         currentsong.play();
         play.src = "pause.svg"
@@ -66,7 +75,7 @@ function playMusic(track, pause = false) {
     document.querySelector(".songtime").innerHTML = "00:00/00:00"
 }
 async function displayAlbums () {
-let a = await fetch(`/spotify-clone-project/songs/`)
+let a = await fetch(sitePath("songs/"))
 let response = await a.text();
 let div = document.createElement("div")
 div.innerHTML = response;
@@ -77,8 +86,11 @@ let array = Array.from(anchors);
 for (let index = 0; index < array.length; index++) {
     const e = array[index];
         if (e.href.includes("/songs/")) {
-            const folder = e.href.split("/").slice(-2)[1];
-            const a = await fetch(`/spotify-clone-project/songs/${folder}/info.json`);
+            const pathParts = new URL(e.href).pathname.split("/").filter(Boolean);
+            const songsIndex = pathParts.lastIndexOf("songs");
+            const folder = pathParts[songsIndex + 1];
+            if (!folder) continue;
+            const a = await fetch(sitePath(`songs/${folder}/info.json`));
             const albumInfo = await a.json();
             console.log(albumInfo);
             cardcontainer.innerHTML= cardcontainer.innerHTML+`<div data-folder="${albumInfo.data}" class="card">
@@ -89,7 +101,7 @@ for (let index = 0; index < array.length; index++) {
                         stroke-linejoin="round" />
                         </svg>
                         </div>
-                        <img src="/spotify-clone-project/songs/${folder}/cover.jpg">
+                        <img src="${sitePath(`songs/${folder}/cover.jpg`)}">
                         <h2>${albumInfo.title}</h2>
                         <p>${albumInfo.description}</p>
                         </div>`
@@ -98,7 +110,7 @@ for (let index = 0; index < array.length; index++) {
                 }
                 Array.from(document.getElementsByClassName("card")).forEach(e => {
         e.addEventListener("click", async item => {
-            await getsongs(`/spotify-clone-project/songs/${item.currentTarget.dataset.folder}`)
+            await getsongs(`songs/${item.currentTarget.dataset.folder}`)
         })
     })
             }
@@ -115,7 +127,7 @@ async function main() {
         document.querySelector(".left").style.left = "-100%";
     });
 
-    await getsongs("spotify-clone-project/songs/ncs");
+    await getsongs("songs/ncs");
     // console.log(songs);
     playMusic(songs[0], true)
 
